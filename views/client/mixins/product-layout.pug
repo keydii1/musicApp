@@ -1,0 +1,13 @@
+mixin productGrid (products)
+    .row
+      each items in products
+        .col-4.mb-3
+          .product-item
+            .inner-image
+              img(src=items.thumbnail, alt="Ảnh không hiển thị")
+            .inner-content
+              h3.inner-title= items.title
+                a(href=`/products/detail/${items.slug}`) Xem chi tiết
+              .inner-price-new #{items.newPrice + '$'}
+              .inner-price-old #{items.price}
+              .inner-discount= items.discountPercentage + '%'

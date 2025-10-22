@@ -1,1 +1,6 @@
-h1 helloword
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+block main
+  .container
+    +box-head(pageTitle)
+
