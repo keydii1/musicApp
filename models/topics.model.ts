@@ -1,23 +1,24 @@
 import mongoose from "mongoose";
+
 const topicSchema = new mongoose.Schema(
   {
     title: String,
+    avatar: String,
+    description: String,
     status: String,
-    content: String,
-    timeStart: Date,
-    timeFinish: Date,
-    listUser:Array,
-    createdBy: String,
-    parentTaskId: String,
+    slug: String,
     deleted: {
       type: Boolean,
       default: false,
     },
     deletedAt: Date,
   },
-  { collection: "topics" }
+  {
+    timestamps: true,
+    collection: "topics", // ✅ gộp vào đây
+  }
 );
 
-const Topic = mongoose.model("Topics", topicSchema, "Topics");
+const Topic = mongoose.model("Topic", topicSchema);
 
 export default Topic;
