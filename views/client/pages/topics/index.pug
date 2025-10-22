@@ -3,4 +3,24 @@ include ../../mixins/box-head.pug
 block main
   .container
     +box-head(pageTitle)
+    .row
+      //- If controller supplies `topics`, render them; otherwise show one sample card
+      if topics && topics.length
+        each topic in topics
+          .col-3.mb-3
+            .card
+              if topic.avatar
+                img(src=topic.avatar)
+              .card-body
+                h5.card-title #{topic.title || 'Untitled'}
+                p.card-text #{topic.description || 'Tổng hợp nhạc mới nhất'}
+                a(href=`/songs/${topic.slug || ''}` class="btn btn-primary") Xem chi tiết
+      else
+        .col-3.mb-3
+          .card
+            img(src="https://backend.daca.vn/assets/images/bolero.jpg")
+            .card-body
+              h5.card-title Bolero
+              p.card-text Tổng hợp nhạc Bolero mới nhất
+              a(href="/songs/:slugTopic" class="btn btn-primary") Xem chi tiết
 
