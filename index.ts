@@ -1,4 +1,8 @@
 import express, { Express,Router,Request,Response } from "express";
+import dotenv from "dotenv";
+import database from "./config/database.config";
+database();
+dotenv.config();
 const app: Express = express();
 const port: number = 3000;
 app.set('views', './views');
